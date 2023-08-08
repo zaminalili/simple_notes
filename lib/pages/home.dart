@@ -12,6 +12,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final DataManager dataManager = DataManager();
+  int crossAxisCount = 2;
 
   // @override
   // void initState() {
@@ -20,17 +21,23 @@ class _HomeState extends State<Home> {
   //   dataManager = DataManager();
   // }
 
+  void _changeCrossAxisCount() {
+    setState(() {
+      crossAxisCount == 2 ? crossAxisCount = 1 : crossAxisCount = 2;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    int crossAxisCount = 2;
-
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.grid_view_rounded),
+          onPressed: _changeCrossAxisCount,
+          icon: Icon(crossAxisCount == 1
+              ? Icons.list_rounded
+              : Icons.grid_view_rounded),
         ),
       ),
       body: NotesGrid(
