@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_notes/constants/edgeinsets.dart';
 import 'package:simple_notes/managers/data_manager.dart';
 
 import '../widgets/notesgrid.dart';
@@ -40,9 +41,12 @@ class _HomeState extends State<Home> {
               : Icons.grid_view_rounded),
         ),
       ),
-      body: NotesGrid(
-        dataManager: dataManager,
-        crossAxisCount: crossAxisCount,
+      body: Padding(
+        padding: AppEdgeInsets.horizantal,
+        child: NotesGrid(
+          dataManager: dataManager,
+          crossAxisCount: crossAxisCount,
+        ),
       ),
     );
   }

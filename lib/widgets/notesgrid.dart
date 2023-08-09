@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_notes/constants/edgeinsets.dart';
 
 import '../managers/data_manager.dart';
 
@@ -27,7 +28,37 @@ class _NotesGridState extends State<NotesGrid> {
         // Verileri burada doldurun
         return InkWell(
           onTap: () {},
-          child: Text(widget.dataManager.getNotes[index].desc),
+          child: Container(
+              // height: MediaQuery.of(context).size.height,
+              padding: AppEdgeInsets.all,
+              decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.circular(10), // Kenar yuvarlaklığı ayarla
+                border: Border.all(
+                  color: Theme.of(context)
+                      .colorScheme
+                      .secondary, // Kenar çizgisi rengi
+                  width: 1, // Kenar çizgisi genişliği
+                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.dataManager.getNotes[index].title ?? '',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  Text(
+                    widget.dataManager.getNotes[index].desc,
+                    maxLines: 6,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              )),
         );
       },
     );
