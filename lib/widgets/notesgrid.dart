@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simple_notes/constants/edgeinsets.dart';
+import 'package:simple_notes/models/note_model.dart';
+import 'package:simple_notes/pages/note.dart';
 
 import '../managers/data_manager.dart';
 
@@ -15,6 +17,13 @@ class NotesGrid extends StatefulWidget {
 }
 
 class _NotesGridState extends State<NotesGrid> {
+  void _pushToNotePage(NoteModel note) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Note(note: note)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -27,7 +36,9 @@ class _NotesGridState extends State<NotesGrid> {
       itemBuilder: (BuildContext context, int index) {
         // Verileri burada doldurun
         return InkWell(
-          onTap: () {},
+          onTap: () {
+            _pushToNotePage(widget.dataManager.getNotes[index]);
+          },
           child: Container(
               // height: MediaQuery.of(context).size.height,
               padding: AppEdgeInsets.all,

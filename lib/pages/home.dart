@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simple_notes/constants/edgeinsets.dart';
 import 'package:simple_notes/managers/data_manager.dart';
+import 'package:simple_notes/pages/note.dart';
 
 import '../widgets/notesgrid.dart';
 
@@ -28,6 +29,13 @@ class _HomeState extends State<Home> {
     });
   }
 
+  void _pushToNotePage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const Note()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +55,10 @@ class _HomeState extends State<Home> {
           dataManager: dataManager,
           crossAxisCount: crossAxisCount,
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _pushToNotePage,
+        child: const Icon(Icons.add),
       ),
     );
   }
