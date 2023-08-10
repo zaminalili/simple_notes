@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_notes/constants/theme.dart';
+import 'package:simple_notes/managers/data_manager.dart';
 import 'package:simple_notes/pages/home.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme().lightTheme,
       darkTheme: AppTheme().darkTheme,
       themeMode: ThemeMode.dark,
-      home: const Home(),
+      home: Home(dataManager: DataManager()),
     );
   }
 }

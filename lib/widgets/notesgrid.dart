@@ -18,7 +18,7 @@ class NotesGrid extends StatefulWidget {
 
 class _NotesGridState extends State<NotesGrid> {
   void _pushToNotePage(NoteModel note) {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => Note(note: note)),
     );

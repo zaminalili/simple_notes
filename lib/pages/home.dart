@@ -6,14 +6,15 @@ import 'package:simple_notes/pages/note.dart';
 import '../widgets/notesgrid.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home({super.key, required this.dataManager});
+  final DataManager dataManager;
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  final DataManager dataManager = DataManager();
+  // final DataManager dataManager = DataManager();
   int crossAxisCount = 2;
 
   // @override
@@ -30,7 +31,7 @@ class _HomeState extends State<Home> {
   }
 
   void _pushToNotePage() {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => const Note()),
     );
@@ -52,7 +53,7 @@ class _HomeState extends State<Home> {
       body: Padding(
         padding: AppEdgeInsets.horizantal,
         child: NotesGrid(
-          dataManager: dataManager,
+          dataManager: widget.dataManager,
           crossAxisCount: crossAxisCount,
         ),
       ),
